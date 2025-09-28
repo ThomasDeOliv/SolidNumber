@@ -24,6 +24,13 @@ namespace ConsoleGames.Game
             _output.WriteLineOutput("*****************************");
             _output.WriteLineOutput("Welcome to the arithmetic game!");
             _output.WriteLineOutput("*****************************");
+
+            while (_engine.InProgress)
+            {
+
+
+                _engine.Next();
+            }
         }
     }
 }
