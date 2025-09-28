@@ -21,17 +21,24 @@ namespace ConsoleGames
             List<(string name, IGamePresenter game)> games = new List<(string name, IGamePresenter game)>()
             {
                 (
-                    "Guess the magik number",
+                    MagikNumberGamePresenter.Name,
                     new MagikNumberGamePresenter(
+                            input,
+                            output,
                             new MagikNumberGameEngine(
                                 new NumberComparator(),
                                 (new RandomNumberGenerator(new Random(), new Lock(), MAX)).Generate(),
                                 MAX_ATTEMPTS
-                            ),
-                            input,
-                            output
+                            )
                         )
                 ),
+                (
+                    ArithmeticGamePresenter.Name,
+                    new ArithmeticGamePresenter(
+                        input,
+                        output
+                    )
+                )
             };
 
             GameLauncher gameSelector = new GameLauncher(input, output, games);

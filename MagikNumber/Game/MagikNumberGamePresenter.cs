@@ -6,24 +6,26 @@ namespace ConsoleGames.Game
 {
     internal class MagikNumberGamePresenter : IGamePresenter
     {
-        private readonly MagikNumberGameEngine _gameEngine;
+        public const string Name = "The magic number game";
+
         private readonly IInput _input;
         private readonly IOutput _output;
+        private readonly MagikNumberGameEngine _engine;
 
-        public MagikNumberGamePresenter(MagikNumberGameEngine gameEngine, IInput input, IOutput output)
+        public MagikNumberGamePresenter(IInput input, IOutput output, MagikNumberGameEngine engine)
         {
-            _gameEngine = gameEngine;
             _input = input;
             _output = output;
+            _engine = engine;
         }
 
         public void Play()
         {
             _output.WriteLineOutput("*****************************");
-            _output.WriteLineOutput("Welcome to Magik Number Game!");
+            _output.WriteLineOutput("Welcome to the magic number game!");
             _output.WriteLineOutput("*****************************");
 
-            while (_gameEngine.InProgress)
+            while (_engine.InProgress)
             {
                 _output.WriteOutput("Make a guess : ");
                 string? output = _input.ReadInput();
@@ -34,7 +36,7 @@ namespace ConsoleGames.Game
                     continue;
                 }
 
-                switch (_gameEngine.MakeGuess(guess))
+                switch (_engine.MakeGuess(guess))
                 {
                     case MagikNumberGameEngineResult.ARE_EQUAL:
                         _output.WriteLineOutput("Congratulations! You've guessed the Magik Number!", true);
@@ -47,16 +49,16 @@ namespace ConsoleGames.Game
                         break;
                 }
 
-                if (!_gameEngine.IsWin)
+                if (!_engine.IsWin)
                 {
-                    _output.WriteLineOutput(_gameEngine.LeftAttempts != 0 ? $"You have {_gameEngine.LeftAttempts} attempts left." : "You have no attempts left.");
+                    _output.WriteLineOutput(_engine.LeftAttempts != 0 ? $"You have {_engine.LeftAttempts} attempts left." : "You have no attempts left.");
                 }
             }
 
-            if (!_gameEngine.IsWin)
+            if (!_engine.IsWin)
             {
                 _output.WriteLineOutput("*****************************", true);
-                _output.WriteLineOutput($"Game Over! The Magik Number was {_gameEngine.MagicNumber}.");
+                _output.WriteLineOutput($"Game Over! The Magik Number was {_engine.MagicNumber}.");
                 _output.WriteLineOutput("*****************************");
             }
         }
