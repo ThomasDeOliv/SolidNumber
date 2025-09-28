@@ -1,4 +1,4 @@
-﻿namespace MagikNumber.Generator
+﻿namespace ConsoleGames.Generator
 {
     internal interface IGenerator
     {

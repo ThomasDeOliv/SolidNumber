@@ -1,4 +1,4 @@
-﻿namespace MagikNumber.Comparator
+﻿namespace ConsoleGames.Comparator
 {
     internal enum ComparisonResult
     {

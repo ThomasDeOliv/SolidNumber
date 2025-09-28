@@ -1,8 +1,8 @@
-﻿using MagikNumber.Game.GameEngine;
-using MagikNumber.IO.In;
-using MagikNumber.IO.Out;
+﻿using ConsoleGames.Game.GameEngine;
+using ConsoleGames.IO.In;
+using ConsoleGames.IO.Out;
 
-namespace MagikNumber.Game
+namespace ConsoleGames.Game
 {
     internal class MagikNumberGamePresenter : IGamePresenter
     {

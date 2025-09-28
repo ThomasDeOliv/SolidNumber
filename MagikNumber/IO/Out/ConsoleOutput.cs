@@ -1,4 +1,4 @@
-﻿namespace MagikNumber.IO.Out
+﻿namespace ConsoleGames.IO.Out
 {
     internal class ConsoleOutput : IOutput
     {

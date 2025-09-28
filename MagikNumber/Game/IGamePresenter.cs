@@ -1,4 +1,4 @@
-﻿namespace MagikNumber.Game
+﻿namespace ConsoleGames.Game
 {
     internal interface IGamePresenter
     {

@@ -1,6 +1,6 @@
-﻿using MagikNumber.Comparator;
+﻿using ConsoleGames.Comparator;
 
-namespace MagikNumber.Game.GameEngine
+namespace ConsoleGames.Game.GameEngine
 {
     internal enum MagikNumberGameEngineResult
     {

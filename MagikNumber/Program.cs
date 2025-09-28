@@ -1,11 +1,12 @@
-﻿using MagikNumber.Comparator;
-using MagikNumber.Game;
-using MagikNumber.Game.GameEngine;
-using MagikNumber.Generator;
-using MagikNumber.IO.In;
-using MagikNumber.IO.Out;
+﻿using ConsoleGames.Comparator;
+using ConsoleGames.Game;
+using ConsoleGames.Game.GameEngine;
+using ConsoleGames.Generator;
+using ConsoleGames.IO.In;
+using ConsoleGames.IO.Out;
+using ConsoleGames.Selector;
 
-namespace MagikNumber
+namespace ConsoleGames
 {
     internal static class Program
     {
@@ -14,16 +15,28 @@ namespace MagikNumber
 
         internal static void Main(string[] args)
         {
-            IGamePresenter game = new MagikNumberGamePresenter(
-                new MagikNumberGameEngine(
-                    new NumberComparator(),
-                    (new RandomNumberGenerator(new Random(), new Lock(), MAX)).Generate(),
-                    MAX_ATTEMPTS
+            IInput input = new ConsoleInput();
+            IOutput output = new ConsoleOutput();
+
+            List<(string name, IGamePresenter game)> games = new List<(string name, IGamePresenter game)>()
+            {
+                (
+                    "Guess the magik number",
+                    new MagikNumberGamePresenter(
+                            new MagikNumberGameEngine(
+                                new NumberComparator(),
+                                (new RandomNumberGenerator(new Random(), new Lock(), MAX)).Generate(),
+                                MAX_ATTEMPTS
+                            ),
+                            input,
+                            output
+                        )
                 ),
-                new ConsoleInput(),
-                new ConsoleOutput()
-            );
-            game.Play();
+            };
+
+            GameLauncher gameSelector = new GameLauncher(input, output, games);
+            IGamePresenter? selectedGame = gameSelector.SelectGame();
+            selectedGame?.Play();
         }
     }
 }
