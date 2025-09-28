@@ -1,4 +1,11 @@
-﻿namespace MagikNumber
+﻿using MagikNumber.Comparator;
+using MagikNumber.Game;
+using MagikNumber.Game.GameEngine;
+using MagikNumber.Generator;
+using MagikNumber.IO.In;
+using MagikNumber.IO.Out;
+
+namespace MagikNumber
 {
     internal static class Program
     {
@@ -7,12 +14,14 @@
 
         internal static void Main(string[] args)
         {
-            Game game = new Game(
-                new NumberGenerator(new Random(), new Lock(), MAX),
-                new NumberComparator(),
-                new Output(),
-                new Input(),
-                MAX_ATTEMPTS
+            IGamePresenter game = new MagikNumberGamePresenter(
+                new MagikNumberGameEngine(
+                    new NumberComparator(),
+                    (new RandomNumberGenerator(new Random(), new Lock(), MAX)).Generate(),
+                    MAX_ATTEMPTS
+                ),
+                new ConsoleInput(),
+                new ConsoleOutput()
             );
             game.Play();
         }

@@ -1,6 +1,6 @@
-﻿namespace MagikNumber
+﻿namespace MagikNumber.IO.In
 {
-    internal class Input : IInput
+    internal class ConsoleInput : IInput
     {
         public string? ReadInput()
         {

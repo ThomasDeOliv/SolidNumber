@@ -1,4 +1,4 @@
-﻿namespace MagikNumber
+﻿namespace MagikNumber.IO.In
 {
     internal interface IInput
     {
