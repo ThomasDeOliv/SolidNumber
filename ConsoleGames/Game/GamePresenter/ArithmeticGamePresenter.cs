@@ -2,17 +2,17 @@
 using ConsoleGames.IO.In;
 using ConsoleGames.IO.Out;
 
-namespace ConsoleGames.Game
+namespace ConsoleGames.Game.GamePresenter
 {
     internal class ArithmeticGamePresenter : IGamePresenter
     {
-        public const string Name = "The arithmetic game";
+        public const string NAME = "The arithmetic game";
 
         private readonly IInput _input;
         private readonly IOutput _output;
-        private readonly ArithmeticGamePresenterEngine _engine;
+        private readonly ArithmeticPresenterGameEngine _engine;
 
-        public ArithmeticGamePresenter(IInput input, IOutput output, ArithmeticGamePresenterEngine engine)
+        public ArithmeticGamePresenter(IInput input, IOutput output, ArithmeticPresenterGameEngine engine)
         {
             _input = input;
             _output = output;
@@ -27,8 +27,6 @@ namespace ConsoleGames.Game
 
             while (_engine.InProgress)
             {
-
-
                 _engine.Next();
             }
         }

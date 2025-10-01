@@ -10,7 +10,7 @@ namespace ConsoleGames.Game.GameEngine
         DIVISION
     }
 
-    internal enum ArithmeticGamePresenterEngineState
+    internal enum ArithmeticPresenterGameEngineState
     {
         FIRST,
         SECOND,
@@ -19,24 +19,24 @@ namespace ConsoleGames.Game.GameEngine
         LAST
     }
 
-    internal class ArithmeticGamePresenterEngine
+    internal class ArithmeticPresenterGameEngine
     {
         private readonly IComparator _comparator;
         private readonly Random _random;
 
-        public bool InProgress { get => State != ArithmeticGamePresenterEngineState.LAST; }
-        public ArithmeticGamePresenterEngineState State { get; private set; }
+        public bool InProgress { get => State != ArithmeticPresenterGameEngineState.LAST; }
+        public ArithmeticPresenterGameEngineState State { get; private set; }
         public int CurrentNumber1 { get; private set; }
         public int CurrentNumber2 { get; private set; }
         public Operation CurrentOperation { get; private set; }
         public byte Score { get; private set; }
 
-        public ArithmeticGamePresenterEngine(IComparator comparator, Random random)
+        public ArithmeticPresenterGameEngine(IComparator comparator, Random random)
         {
             _comparator = comparator;
             _random = random;
 
-            State = ArithmeticGamePresenterEngineState.FIRST;
+            State = ArithmeticPresenterGameEngineState.FIRST;
             Score = 0;
             CurrentNumber1 = 0;
             CurrentNumber2 = 0;

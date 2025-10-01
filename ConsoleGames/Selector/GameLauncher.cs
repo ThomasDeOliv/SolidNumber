@@ -1,4 +1,4 @@
-﻿using ConsoleGames.Game;
+﻿using ConsoleGames.Game.GamePresenter;
 using ConsoleGames.IO.In;
 using ConsoleGames.IO.Out;
 

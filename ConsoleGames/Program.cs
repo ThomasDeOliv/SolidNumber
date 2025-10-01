@@ -1,6 +1,6 @@
 ﻿using ConsoleGames.Comparator;
-using ConsoleGames.Game;
 using ConsoleGames.Game.GameEngine;
+using ConsoleGames.Game.GamePresenter;
 using ConsoleGames.Generator;
 using ConsoleGames.IO.In;
 using ConsoleGames.IO.Out;
@@ -21,7 +21,7 @@ namespace ConsoleGames
             List<(string name, IGamePresenter game)> games = new List<(string name, IGamePresenter game)>()
             {
                 (
-                    MagikNumberGamePresenter.Name,
+                    MagikNumberGamePresenter.NAME,
                     new MagikNumberGamePresenter(
                             input,
                             output,
@@ -32,13 +32,14 @@ namespace ConsoleGames
                             )
                         )
                 ),
-                (
-                    ArithmeticGamePresenter.Name,
-                    new ArithmeticGamePresenter(
-                        input,
-                        output
-                    )
-                )
+                //(
+                //    ArithmeticGamePresenter.Name,
+                //    new ArithmeticGamePresenter(
+                //        input,
+                //        output,
+                //        new ArithmeticGamePresenterEngine()
+                //    )
+                //)
             };
 
             GameLauncher gameSelector = new GameLauncher(input, output, games);

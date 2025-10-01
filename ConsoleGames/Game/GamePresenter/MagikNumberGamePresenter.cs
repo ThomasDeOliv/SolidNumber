@@ -2,11 +2,11 @@
 using ConsoleGames.IO.In;
 using ConsoleGames.IO.Out;
 
-namespace ConsoleGames.Game
+namespace ConsoleGames.Game.GamePresenter
 {
     internal class MagikNumberGamePresenter : IGamePresenter
     {
-        public const string Name = "The magic number game";
+        public const string NAME = "The magic number game";
 
         private readonly IInput _input;
         private readonly IOutput _output;
@@ -28,9 +28,9 @@ namespace ConsoleGames.Game
             while (_engine.InProgress)
             {
                 _output.WriteOutput("Make a guess : ");
-                string? output = _input.ReadInput();
+                string? input = _input.ReadInput();
 
-                if (!int.TryParse(output, out int guess))
+                if (!int.TryParse(input, out int guess))
                 {
                     _output.WriteLineOutput("Invalid input. Please enter a valid number.", true);
                     continue;

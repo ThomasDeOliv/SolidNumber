@@ -1,4 +1,4 @@
-﻿namespace ConsoleGames.Game
+﻿namespace ConsoleGames.Game.GamePresenter
 {
     internal interface IGamePresenter
     {
